@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mars-deployment
+  labels:
+    app: mars
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mars
+  template:
+    metadata:
+      labels:
+        app: mars
+    spec:
+      containers:
+        - name: mars
+          image: 192.168.1.18:5000/mars:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
